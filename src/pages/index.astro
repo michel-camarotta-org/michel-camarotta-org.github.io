@@ -55,12 +55,54 @@ const focusAreas = [
   ],
 ];
 
+const examples = [
+  {
+    number: '01',
+    title: 'A governed agentic review',
+    description:
+      'A proposed change moves through structured context, an agent-assisted draft, deterministic checks, and an explicit human decision.',
+    steps: ['Context', 'Agent draft', 'Quality gate', 'Human decision'],
+    outcome: 'Traceable outcome',
+  },
+  {
+    number: '02',
+    title: 'Context as an engineering asset',
+    description:
+      'Sources are selected, bounded, versioned, and matched to the task before a model is asked to act on them.',
+    steps: ['Sources', 'Curated context', 'Task execution', 'Evidence'],
+    outcome: 'Less drift',
+  },
+  {
+    number: '03',
+    title: 'AI-assisted engineering with gates',
+    description:
+      'Reusable instructions accelerate delivery while automated validation and human review preserve engineering accountability.',
+    steps: ['Intent', 'Reusable workflow', 'Validation', 'Review'],
+    outcome: 'Repeatable delivery',
+  },
+];
+
 const publicWork = [
-  'Reference Architectures',
-  'Reusable Frameworks',
-  'Engineering Guides',
-  'Open-Source Tools',
-  'Articles and Research Notes',
+  [
+    'Reference Architectures',
+    'System boundaries, decision paths, and quality controls for practical AI adoption.',
+  ],
+  [
+    'Reusable Frameworks',
+    'Repeatable structures for context, orchestration, review, and organizational learning.',
+  ],
+  [
+    'Engineering Guides',
+    'Concise guidance for teams adopting AI-assisted engineering responsibly.',
+  ],
+  [
+    'Open-Source Tools',
+    'Small, focused utilities that make governed workflows easier to apply.',
+  ],
+  [
+    'Articles and Research Notes',
+    'Working ideas, observations, and lessons published with appropriate context.',
+  ],
 ];
 
 const selectedPrinciples = [
@@ -105,6 +147,11 @@ const year = new Date().getFullYear();
             href="https://github.com/michel-camarotta-org"
             >View GitHub <span aria-hidden="true">↗</span></a
           >
+        </div>
+        <div class="hero-signals" aria-label="Core themes">
+          <span>Practical systems</span>
+          <span>Governed workflows</span>
+          <span>Human judgment</span>
         </div>
       </div>
       <div class="hero-system" aria-hidden="true">
@@ -167,6 +214,63 @@ const year = new Date().getFullYear();
       </div>
     </section>
 
+    <section id="examples" class="section examples-section">
+      <div class="container">
+        <div class="examples-heading">
+          <SectionHeading
+            eyebrow="Examples in practice"
+            title="What the approach can look like"
+            intro="These are illustrative patterns, not client case studies. They show how architecture, governance, and human judgment can translate into concrete working flows."
+          />
+          <p class="examples-note">
+            The emphasis is on the shape of the system: where context enters,
+            where automation helps, where validation happens, and where people
+            remain accountable.
+          </p>
+        </div>
+        <div class="examples-grid">
+          {
+            examples.map((example) => (
+              <article class="example-card">
+                <header>
+                  <span class="example-number">{example.number}</span>
+                  <span class="example-label">Illustrative pattern</span>
+                </header>
+                <h3>{example.title}</h3>
+                <p>{example.description}</p>
+                <div class="example-flow" aria-label={`${example.title} flow`}>
+                  {example.steps.map((step, index) => (
+                    <>
+                      <span class="flow-node">{step}</span>
+                      {index < example.steps.length - 1 && (
+                        <span class="flow-arrow" aria-hidden="true">
+                          →
+                        </span>
+                      )}
+                    </>
+                  ))}
+                </div>
+                <div class="example-outcome">
+                  <span>Outcome</span>
+                  <strong>{example.outcome}</strong>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <aside class="field-note" aria-label="Working premise">
+      <div class="container field-note-inner">
+        <p class="eyebrow">Working premise</p>
+        <blockquote>
+          AI becomes useful when capability is translated into a system people
+          can understand, govern, and improve.
+        </blockquote>
+      </div>
+    </aside>
+
     <section id="work" class="section container">
       <div class="work-heading">
         <SectionHeading
@@ -180,14 +284,11 @@ const year = new Date().getFullYear();
       </div>
       <div class="work-list">
         {
-          publicWork.map((item, index) => (
+          publicWork.map(([title, description], index) => (
             <div class="work-row">
               <span>{String(index + 1).padStart(2, '0')}</span>
-              <h3>{item}</h3>
-              <p>
-                Materials will be added progressively as the public body of work
-                evolves.
-              </p>
+              <h3>{title}</h3>
+              <p>{description}</p>
             </div>
           ))
         }
@@ -196,10 +297,23 @@ const year = new Date().getFullYear();
 
     <section id="about" class="section about-section">
       <div class="container about-grid">
-        <div>
+        <div class="about-heading">
           <p class="eyebrow">Professional perspective</p>
           <h2>A systems-thinking perspective on AI</h2>
         </div>
+        <figure class="portrait-figure">
+          <img
+            src="/images/michel-camarotta.jpg"
+            width="1400"
+            height="1400"
+            loading="lazy"
+            alt="Michel Camarotta outdoors, with mountains and the coast behind him"
+          />
+          <figcaption>
+            <strong>Michel Camarotta</strong>
+            <span>Systems Engineer · Montevideo, Uruguay</span>
+          </figcaption>
+        </figure>
         <div class="about-copy">
           <p>
             Michel Camarotta is a Systems Engineer with approximately 18 years
