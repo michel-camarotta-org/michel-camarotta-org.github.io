@@ -39,3 +39,25 @@ const navigation = [
     </details>
   </div>
 </header>
+
+<script is:inline>
+  // Collapse the mobile panel once a destination is chosen, so it does not
+  // cover the section the visitor just jumped to.
+  (function () {
+    var menu = document.querySelector('.mobile-nav');
+    if (!menu) return;
+
+    menu.querySelectorAll('nav a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        menu.open = false;
+      });
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && menu.open) {
+        menu.open = false;
+        menu.querySelector('summary').focus();
+      }
+    });
+  })();
+</script>
