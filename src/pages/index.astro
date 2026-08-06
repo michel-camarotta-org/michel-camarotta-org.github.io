@@ -6,26 +6,39 @@ import SectionHeading from '../components/SectionHeading.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const principles = [
-  [
-    '01',
-    'Systems before tools',
-    'Start from organizational problems, workflows, context, constraints, and measurable outcomes.',
-  ],
-  [
-    '02',
-    'Human judgment by design',
-    'Use human-in-the-loop practices, explicit decision rights, and appropriate oversight.',
-  ],
-  [
-    '03',
-    'Governance embedded in delivery',
-    'Treat standards, quality gates, traceability, risk management, and observability as part of the architecture.',
-  ],
-  [
-    '04',
-    'Reusable foundations',
-    'Create repeatable frameworks, skills, workflows, and operating patterns rather than isolated demonstrations.',
-  ],
+  {
+    number: '01',
+    title: 'Systems before tools',
+    statement: 'Agentic systems require architecture, not only prompts.',
+    text: 'Start from organizational problems, workflows, context, constraints, and measurable outcomes.',
+  },
+  {
+    number: '02',
+    title: 'Human judgment by design',
+    statement: 'AI should augment judgment, not obscure accountability.',
+    text: 'Use human-in-the-loop practices, explicit decision rights, and appropriate oversight.',
+  },
+  {
+    number: '03',
+    title: 'Governance embedded in delivery',
+    statement:
+      'Governance should be built into workflows, not added afterward.',
+    text: 'Treat standards, quality gates, traceability, risk management, and observability as part of the architecture.',
+  },
+  {
+    number: '04',
+    title: 'Reusable foundations',
+    statement: 'Reusability is a prerequisite for scalable adoption.',
+    text: 'Create repeatable frameworks, skills, workflows, and operating patterns rather than isolated demonstrations.',
+  },
+];
+
+// The remaining principles carry ideas the four above do not, so they continue
+// the same numbered sequence in a more compact form.
+const furtherPrinciples = [
+  'Deterministic components remain essential in AI-enabled systems.',
+  'Context is an engineering asset that must be governed.',
+  'Quality is a system property, not a final testing phase.',
 ];
 
 const focusAreas = [
@@ -82,7 +95,7 @@ const examples = [
   },
 ];
 
-const publicWork = [
+const roadmap = [
   [
     'Reference Architectures',
     'System boundaries, decision paths, and quality controls for practical AI adoption.',
@@ -103,16 +116,6 @@ const publicWork = [
     'Articles and Research Notes',
     'Working ideas, observations, and lessons published with appropriate context.',
   ],
-];
-
-const selectedPrinciples = [
-  'AI should augment judgment, not obscure accountability.',
-  'Agentic systems require architecture, not only prompts.',
-  'Governance should be built into workflows, not added afterward.',
-  'Deterministic components remain essential in AI-enabled systems.',
-  'Context is an engineering asset that must be governed.',
-  'Reusability is a prerequisite for scalable adoption.',
-  'Quality is a system property, not a final testing phase.',
 ];
 
 const year = new Date().getFullYear();
@@ -148,10 +151,10 @@ const year = new Date().getFullYear();
             >View GitHub <span aria-hidden="true">↗</span></a
           >
         </div>
-        <div class="hero-signals" aria-label="Core themes">
-          <span>Practical systems</span>
-          <span>Governed workflows</span>
-          <span>Human judgment</span>
+        <div class="hero-signals" aria-label="Background">
+          <span>Nearly two decades in enterprise delivery</span>
+          <span>Quality and automation architecture</span>
+          <span>Montevideo, Uruguay</span>
         </div>
       </div>
       <div class="hero-system" aria-hidden="true">
@@ -180,15 +183,28 @@ const year = new Date().getFullYear();
       />
       <div class="principles-grid">
         {
-          principles.map(([number, title, text]) => (
+          principles.map((principle) => (
             <article class="principle-card">
-              <span>{number}</span>
-              <h3>{title}</h3>
-              <p>{text}</p>
+              <span>{principle.number}</span>
+              <h3>{principle.title}</h3>
+              <p class="principle-statement">{principle.statement}</p>
+              <p>{principle.text}</p>
             </article>
           ))
         }
       </div>
+      <ol class="statement-list" start="5">
+        {
+          furtherPrinciples.map((statement, index) => (
+            <li>
+              <>
+                <span>{String(index + 5).padStart(2, '0')}</span>
+                <p>{statement}</p>
+              </>
+            </li>
+          ))
+        }
+      </ol>
     </section>
 
     <section id="focus" class="section section-surface">
@@ -272,19 +288,18 @@ const year = new Date().getFullYear();
     </aside>
 
     <section id="work" class="section container">
-      <div class="work-heading">
-        <SectionHeading
-          eyebrow="Public work"
-          title="Knowledge built to be useful"
-          intro="Public artifacts are being prepared and will be published as they reach an appropriate level of maturity."
-        />
-        <ArrowLink href="https://github.com/michel-camarotta-org" external
-          >Explore the organization</ArrowLink
-        >
-      </div>
+      <SectionHeading
+        eyebrow="Roadmap"
+        title="What is being built in the open"
+        intro="This is the intended shape of the public work, stated so the direction is explicit rather than implied."
+      />
+      <p class="roadmap-note">
+        Nothing in this list is published yet. Each item will be linked here
+        once it reaches a level of maturity worth sharing.
+      </p>
       <div class="work-list">
         {
-          publicWork.map(([title, description], index) => (
+          roadmap.map(([title, description], index) => (
             <div class="work-row">
               <span>{String(index + 1).padStart(2, '0')}</span>
               <h3>{title}</h3>
@@ -317,28 +332,6 @@ const year = new Date().getFullYear();
             >Full professional history</ArrowLink
           >
         </div>
-      </div>
-    </section>
-
-    <section
-      class="section principles-section"
-      aria-labelledby="selected-principles-title"
-    >
-      <div class="container">
-        <p class="eyebrow">Selected principles</p>
-        <h2 id="selected-principles-title">Ideas that guide the work</h2>
-        <ol class="statement-list">
-          {
-            selectedPrinciples.map((statement, index) => (
-              <li>
-                <>
-                  <span>{String(index + 1).padStart(2, '0')}</span>
-                  <p>{statement}</p>
-                </>
-              </li>
-            ))
-          }
-        </ol>
       </div>
     </section>
 

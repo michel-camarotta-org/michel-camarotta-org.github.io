@@ -4,8 +4,8 @@
   <rect x="78" y="74" width="72" height="72" rx="16" fill="#123c2d"/>
   <path d="M92 126V92h10l12 15 12-15h10v34h-10v-19l-12 14-12-14v19z" fill="#f2eee3"/>
   <path d="M92 133h44" stroke="#88b398" stroke-width="4"/>
-  <text x="174" y="121" fill="#f2eee3" font-family="Arial, sans-serif" font-size="34" font-weight="600">Mich Think AI</text>
-  <text x="78" y="310" fill="#f2eee3" font-family="Arial, sans-serif" font-size="70" font-weight="500">Practical AI systems.</text>
-  <text x="78" y="393" fill="#f2eee3" font-family="Arial, sans-serif" font-size="70" font-weight="500">Strong architecture.</text>
-  <text x="80" y="508" fill="#88b398" font-family="Arial, sans-serif" font-size="25" letter-spacing="4">AI · ARCHITECTURE · TRANSFORMATION</text>
+  <text x="174" y="121" fill="#f2eee3" font-family="Inter Variable, Inter, sans-serif" font-size="34" font-weight="600">Mich Think AI</text>
+  <text x="78" y="310" fill="#f2eee3" font-family="Inter Variable, Inter, sans-serif" font-size="70" font-weight="500">Practical AI systems.</text>
+  <text x="78" y="393" fill="#f2eee3" font-family="Inter Variable, Inter, sans-serif" font-size="70" font-weight="500">Strong architecture.</text>
+  <text x="80" y="508" fill="#88b398" font-family="Inter Variable, Inter, sans-serif" font-size="25" letter-spacing="4">AI · ARCHITECTURE · TRANSFORMATION</text>
 </svg>

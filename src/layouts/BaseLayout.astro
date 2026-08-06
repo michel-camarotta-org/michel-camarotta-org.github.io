@@ -8,7 +8,8 @@ interface Props {
 
 const { title, description } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const ogImage = new URL('/og-image.svg', Astro.site);
+// Social platforms reject SVG previews, so the shared card is a raster image.
+const ogImage = new URL('/og-image.png', Astro.site);
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
@@ -42,16 +43,34 @@ const structuredData = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="preload"
+      href="/fonts/inter-latin-variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Mich Think AI" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Mich Think AI — practical AI systems, strong architecture."
+    />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta
+      name="twitter:image:alt"
+      content="Mich Think AI — practical AI systems, strong architecture."
+    />
     <script
       is:inline
       type="application/ld+json"
