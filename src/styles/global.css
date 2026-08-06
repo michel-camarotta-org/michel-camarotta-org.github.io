@@ -427,7 +427,7 @@ h3 {
 }
 
 .principle-card h3 {
-  margin: 5rem 0 1rem;
+  margin: 3.25rem 0 0.75rem;
 }
 
 .principle-card p,
@@ -436,6 +436,18 @@ h3 {
   margin-bottom: 0;
   color: var(--muted);
   font-size: 0.92rem;
+}
+
+/* The sharp form of each principle, between its title and the explanation. */
+.principle-card .principle-statement {
+  margin: 0 0 0.9rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 1rem;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
 }
 
 .focus-grid {
@@ -618,11 +630,14 @@ h3 {
   letter-spacing: -0.04em;
 }
 
-.work-heading {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 2rem;
+/* States plainly that the roadmap lists intent, not published artifacts. */
+.roadmap-note {
+  max-width: 640px;
+  margin: -2rem 0 3rem;
+  padding-left: 1.25rem;
+  border-left: 1px solid #476254;
+  color: var(--muted);
+  font-size: 0.88rem;
 }
 
 .arrow-link {
@@ -694,12 +709,9 @@ h3 {
   margin-top: 2rem;
 }
 
-.principles-section h2 {
-  margin-bottom: 4rem;
-}
-
+/* Continues the numbered principles below the cards, in a denser form. */
 .statement-list {
-  margin: 0;
+  margin: 4rem 0 0;
   padding: 0;
   border-top: 1px solid var(--line);
   list-style: none;
@@ -914,12 +926,8 @@ footer {
     margin-top: 3rem;
   }
 
-  .work-heading {
-    display: block;
-  }
-
-  .work-heading .arrow-link {
-    margin-bottom: 3rem;
+  .roadmap-note {
+    margin-top: -1rem;
   }
 
   .work-row {
