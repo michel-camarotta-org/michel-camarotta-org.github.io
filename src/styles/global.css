@@ -637,43 +637,12 @@ h3 {
 .about-grid {
   display: grid;
   align-items: start;
-  grid-template-columns: 0.85fr 0.7fr 1fr;
+  grid-template-columns: 0.85fr 1fr;
   gap: clamp(2rem, 5vw, 5rem);
 }
 
 .about-heading h2 {
   font-size: clamp(2.15rem, 3.7vw, 3.7rem);
-}
-
-.portrait-figure {
-  margin: 0;
-}
-
-.portrait-figure img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  border: 1px solid rgba(242, 238, 227, 0.2);
-  object-fit: cover;
-  object-position: 50% 42%;
-}
-
-.portrait-figure figcaption {
-  display: grid;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(242, 238, 227, 0.2);
-  gap: 0.15rem;
-}
-
-.portrait-figure figcaption strong {
-  font-family: var(--display);
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.portrait-figure figcaption span {
-  color: #a9c2b3;
-  font-size: 0.72rem;
 }
 
 .about-copy {
@@ -841,10 +810,6 @@ footer {
 
   .about-grid {
     grid-template-columns: 1fr 1fr;
-  }
-
-  .about-heading {
-    grid-column: 1 / -1;
   }
 }
 
