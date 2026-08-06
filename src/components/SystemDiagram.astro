@@ -1,0 +1,130 @@
+---
+const nodes = [
+  ['Context', 102.72, 102.72],
+  ['Systems', 357.28, 102.72],
+  ['Judgment', 357.28, 357.28],
+  ['Governance', 102.72, 357.28],
+] as const;
+
+const connectors = [
+  'M191.82 191.82 125.35 125.35',
+  'M268.18 191.82 334.65 125.35',
+  'M268.18 268.18 334.65 334.65',
+  'M191.82 268.18 125.35 334.65',
+];
+---
+
+<svg
+  class="system-diagram"
+  viewBox="0 0 460 460"
+  preserveAspectRatio="xMidYMid meet"
+  aria-hidden="true"
+  focusable="false"
+>
+  <g class="orbit-outer">
+    <circle cx="230" cy="230" r="180"></circle>
+  </g>
+  <circle class="orbit-inner" cx="230" cy="230" r="120"></circle>
+
+  {connectors.map((d) => <path class="connector" d={d} />)}
+
+  {
+    nodes.map(([label, cx, cy]) => (
+      <g class="diagram-node">
+        <rect x={cx - 56} y={cy - 18} width="112" height="36" rx="2" />
+        <text x={cx} y={cy + 4}>
+          {label}
+        </text>
+      </g>
+    ))
+  }
+
+  <circle class="core" cx="230" cy="230" r="46"></circle>
+  <g class="core-mark" transform="translate(202.8 201.1) scale(0.85)">
+    <path d="M14 45V18h8l10 12 10-12h8v27h-8V30L32 41 22 30v15z"></path>
+    <path class="core-rule" d="M14 50h36"></path>
+  </g>
+</svg>
+
+<style>
+  .system-diagram {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .orbit-outer circle,
+  .orbit-inner,
+  .connector {
+    fill: none;
+    stroke: #3d5548;
+    stroke-width: 1;
+    stroke-dasharray: 3 6;
+  }
+
+  .orbit-inner {
+    stroke: #33473c;
+  }
+
+  .connector {
+    stroke: #47614f;
+    stroke-dasharray: 4 5;
+    animation: flow 3.2s linear infinite;
+  }
+
+  .orbit-outer {
+    transform-box: view-box;
+    transform-origin: 50% 50%;
+    animation: rotate 90s linear infinite;
+  }
+
+  .diagram-node rect {
+    fill: var(--bg);
+    stroke: #3f584a;
+    stroke-width: 1;
+  }
+
+  .diagram-node text {
+    fill: var(--muted);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-anchor: middle;
+    text-transform: uppercase;
+  }
+
+  .core {
+    fill: var(--green-deep);
+    stroke: #2f6b52;
+    stroke-width: 1;
+  }
+
+  .core-mark path {
+    fill: var(--ink);
+  }
+
+  .core-rule {
+    fill: none;
+    stroke: var(--green);
+    stroke-width: 3;
+  }
+
+  @keyframes rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes flow {
+    to {
+      stroke-dashoffset: -18;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .orbit-outer,
+    .connector {
+      animation: none;
+    }
+  }
+</style>

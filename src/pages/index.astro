@@ -3,6 +3,7 @@ import ArrowLink from '../components/ArrowLink.astro';
 import Header from '../components/Header.astro';
 import Logo from '../components/Logo.astro';
 import SectionHeading from '../components/SectionHeading.astro';
+import SystemDiagram from '../components/SystemDiagram.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const principles = [
@@ -56,11 +57,26 @@ const focusAreas = [
 ];
 
 const publicWork = [
-  'Reference Architectures',
-  'Reusable Frameworks',
-  'Engineering Guides',
-  'Open-Source Tools',
-  'Articles and Research Notes',
+  [
+    'Reference Architectures',
+    'Annotated blueprints for AI-enabled systems: components, data flow, controls, and decision points.',
+  ],
+  [
+    'Reusable Frameworks',
+    'Operating models and templates teams can adopt without rebuilding the same thinking each time.',
+  ],
+  [
+    'Engineering Guides',
+    'Practical guidance for AI-assisted delivery, from context design to review and validation.',
+  ],
+  [
+    'Open-Source Tools',
+    'Small, focused utilities that support governed and repeatable AI-assisted engineering.',
+  ],
+  [
+    'Articles and Research Notes',
+    'Working notes on architecture, agentic systems, governance, and quality in practice.',
+  ],
 ];
 
 const selectedPrinciples = [
@@ -107,21 +123,8 @@ const year = new Date().getFullYear();
           >
         </div>
       </div>
-      <div class="hero-system" aria-hidden="true">
-        <div class="system-frame">
-          <div class="node node-core"><Logo size={44} /></div>
-          <div class="node node-a">Context</div>
-          <div class="node node-b">Systems</div>
-          <div class="node node-c">Judgment</div>
-          <div class="node node-d">Governance</div>
-          <svg viewBox="0 0 520 440" preserveAspectRatio="none">
-            <path
-              d="M260 220L104 90M260 220L420 100M260 220L420 342M260 220L108 350"
-            ></path>
-            <circle cx="260" cy="220" r="138"></circle>
-            <circle cx="260" cy="220" r="190"></circle>
-          </svg>
-        </div>
+      <div class="hero-figure">
+        <SystemDiagram />
       </div>
     </section>
 
@@ -135,9 +138,11 @@ const year = new Date().getFullYear();
         {
           principles.map(([number, title, text]) => (
             <article class="principle-card">
-              <span>{number}</span>
-              <h3>{title}</h3>
-              <p>{text}</p>
+              <span class="card-index">{number}</span>
+              <div class="card-body">
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </div>
             </article>
           ))
         }
@@ -155,11 +160,13 @@ const year = new Date().getFullYear();
           {
             focusAreas.map(([title, text], index) => (
               <article class="focus-card">
-                <span class="focus-number">
+                <span class="card-index">
                   {String(index + 1).padStart(2, '0')}
                 </span>
-                <h3>{title}</h3>
-                <p>{text}</p>
+                <div class="card-body">
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </div>
               </article>
             ))
           }
@@ -180,14 +187,14 @@ const year = new Date().getFullYear();
       </div>
       <div class="work-list">
         {
-          publicWork.map((item, index) => (
+          publicWork.map(([title, text], index) => (
             <div class="work-row">
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <h3>{item}</h3>
-              <p>
-                Materials will be added progressively as the public body of work
-                evolves.
-              </p>
+              <span class="card-index">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <h3>{title}</h3>
+              <p>{text}</p>
+              <span class="work-status">In preparation</span>
             </div>
           ))
         }
@@ -230,10 +237,10 @@ const year = new Date().getFullYear();
           {
             selectedPrinciples.map((statement, index) => (
               <li>
-                <>
-                  <span>{String(index + 1).padStart(2, '0')}</span>
-                  <p>{statement}</p>
-                </>
+                <span class="card-index">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <p>{statement}</p>
               </li>
             ))
           }
@@ -245,6 +252,9 @@ const year = new Date().getFullYear();
       <div>
         <p class="eyebrow">Contact</p>
         <h2>Let’s connect</h2>
+        <p class="contact-note">
+          Based in Montevideo, Uruguay. Working with distributed teams.
+        </p>
       </div>
       <div>
         <p class="contact-copy">

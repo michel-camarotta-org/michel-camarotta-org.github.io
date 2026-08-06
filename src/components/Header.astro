@@ -26,7 +26,7 @@ const navigation = [
       <a href="https://www.linkedin.com/in/mcamarotta/">LinkedIn</a>
     </div>
 
-    <details class="mobile-nav">
+    <details class="mobile-nav" id="mobile-nav">
       <summary aria-label="Open navigation"
         ><span></span><span></span><span></span></summary
       >
@@ -38,3 +38,58 @@ const navigation = [
     </details>
   </div>
 </header>
+
+<script is:inline>
+  (function () {
+    const menu = document.getElementById('mobile-nav');
+
+    if (menu) {
+      const close = () => menu.removeAttribute('open');
+
+      menu.querySelectorAll('nav a').forEach((link) => {
+        link.addEventListener('click', close);
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') close();
+      });
+
+      document.addEventListener('click', (event) => {
+        if (menu.hasAttribute('open') && !menu.contains(event.target)) close();
+      });
+    }
+
+    if (!('IntersectionObserver' in window)) return;
+
+    // The sections are parsed after this header, so wait for the full document.
+    const trackSections = () => {
+      const links = new Map();
+      document.querySelectorAll('.desktop-nav a[href^="#"]').forEach((link) => {
+        const section = document.querySelector(link.getAttribute('href'));
+        if (section) links.set(section, link);
+      });
+
+      let current = null;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            if (current) current.removeAttribute('aria-current');
+            current = links.get(entry.target);
+            if (current) current.setAttribute('aria-current', 'true');
+          }
+        },
+        { rootMargin: '-45% 0px -50% 0px' },
+      );
+
+      links.forEach((_link, section) => observer.observe(section));
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', trackSections);
+    } else {
+      trackSections();
+    }
+  })();
+</script>
