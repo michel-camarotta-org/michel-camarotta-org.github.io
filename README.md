@@ -37,8 +37,17 @@ src/
   pages/        Site routes
   styles/       Global design system and responsive styles
 public/         Static metadata and brand assets
+specs/          Specifications for pending work
 .github/        GitHub Actions deployment workflow
 ```
+
+## Pending work
+
+Changes that alter what the site claims, how it behaves for a visitor, or how
+it is validated and deployed are specified before they are built. Open items
+live in [`specs/`](specs/README.md), each recording the problem, the evidence
+behind it, and criteria anyone can check. Specs marked `Draft` contain an open
+question and are waiting on a decision rather than on implementation.
 
 ## Brand and privacy
 
