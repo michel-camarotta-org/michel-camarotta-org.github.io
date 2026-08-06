@@ -1,0 +1,287 @@
+---
+import ArrowLink from '../components/ArrowLink.astro';
+import Header from '../components/Header.astro';
+import Logo from '../components/Logo.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const principles = [
+  [
+    '01',
+    'Systems before tools',
+    'Start from organizational problems, workflows, context, constraints, and measurable outcomes.',
+  ],
+  [
+    '02',
+    'Human judgment by design',
+    'Use human-in-the-loop practices, explicit decision rights, and appropriate oversight.',
+  ],
+  [
+    '03',
+    'Governance embedded in delivery',
+    'Treat standards, quality gates, traceability, risk management, and observability as part of the architecture.',
+  ],
+  [
+    '04',
+    'Reusable foundations',
+    'Create repeatable frameworks, skills, workflows, and operating patterns rather than isolated demonstrations.',
+  ],
+];
+
+const focusAreas = [
+  [
+    'AI Solution Architecture',
+    'Designing practical systems that integrate models, deterministic components, APIs, data, tools, and human decisions.',
+  ],
+  [
+    'Agentic Workflows',
+    'Structuring agents, context, tools, handoffs, quality gates, and orchestration for reliable execution.',
+  ],
+  [
+    'AI-Assisted Software Engineering',
+    'Improving engineering delivery through controlled use of LLMs, reusable instructions, automated validation, and human review.',
+  ],
+  [
+    'Digital Transformation',
+    'Connecting technology adoption with organizational processes, governance, roles, capabilities, and outcomes.',
+  ],
+  [
+    'AI Governance',
+    'Embedding validation, traceability, security awareness, cost control, and responsible human oversight.',
+  ],
+  [
+    'Quality Engineering',
+    'Applying systems thinking, risk-based validation, observability, and engineering standards to AI-enabled delivery.',
+  ],
+];
+
+const publicWork = [
+  'Reference Architectures',
+  'Reusable Frameworks',
+  'Engineering Guides',
+  'Open-Source Tools',
+  'Articles and Research Notes',
+];
+
+const selectedPrinciples = [
+  'AI should augment judgment, not obscure accountability.',
+  'Agentic systems require architecture, not only prompts.',
+  'Governance should be built into workflows, not added afterward.',
+  'Deterministic components remain essential in AI-enabled systems.',
+  'Context is an engineering asset that must be governed.',
+  'Reusability is a prerequisite for scalable adoption.',
+  'Quality is a system property, not a final testing phase.',
+];
+
+const year = new Date().getFullYear();
+---
+
+<BaseLayout
+  title="Mich Think AI | AI Architecture and Digital Transformation"
+  description="Mich Think AI explores practical AI systems, agentic workflows, governance, solution architecture, and AI-assisted digital transformation."
+>
+  <div id="top"></div>
+  <Header />
+  <main id="main-content">
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">
+          Artificial intelligence · architecture · transformation
+        </p>
+        <h1 id="hero-title">
+          Designing practical AI systems for real organizations.
+        </h1>
+        <p class="hero-intro">
+          Mich Think AI explores how organizations can design, adopt, and govern
+          AI-assisted systems through strong architecture, reusable frameworks,
+          human oversight, and disciplined engineering practices.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#approach"
+            >Explore the approach <span aria-hidden="true">↓</span></a
+          >
+          <a
+            class="button secondary"
+            href="https://github.com/michel-camarotta-org"
+            >View GitHub <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </div>
+      <div class="hero-system" aria-hidden="true">
+        <div class="system-frame">
+          <div class="node node-core"><Logo size={44} /></div>
+          <div class="node node-a">Context</div>
+          <div class="node node-b">Systems</div>
+          <div class="node node-c">Judgment</div>
+          <div class="node node-d">Governance</div>
+          <svg viewBox="0 0 520 440" preserveAspectRatio="none">
+            <path
+              d="M260 220L104 90M260 220L420 100M260 220L420 342M260 220L108 350"
+            ></path>
+            <circle cx="260" cy="220" r="138"></circle>
+            <circle cx="260" cy="220" r="190"></circle>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach" class="section container">
+      <SectionHeading
+        eyebrow="Approach"
+        title="From AI experimentation to sustainable adoption"
+        intro="Valuable AI adoption requires more than tools or prompts. It needs an operating model that connects technology, people, decisions, and accountability."
+      />
+      <div class="principles-grid">
+        {
+          principles.map(([number, title, text]) => (
+            <article class="principle-card">
+              <span>{number}</span>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section id="focus" class="section section-surface">
+      <div class="container">
+        <SectionHeading
+          eyebrow="Focus areas"
+          title="Architecture for responsible, repeatable progress"
+          intro="Areas of practice and exploration for turning AI capabilities into dependable organizational systems."
+        />
+        <div class="focus-grid">
+          {
+            focusAreas.map(([title, text], index) => (
+              <article class="focus-card">
+                <span class="focus-number">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="section container">
+      <div class="work-heading">
+        <SectionHeading
+          eyebrow="Public work"
+          title="Knowledge built to be useful"
+          intro="Public artifacts are being prepared and will be published as they reach an appropriate level of maturity."
+        />
+        <ArrowLink href="https://github.com/michel-camarotta-org" external
+          >Explore the organization</ArrowLink
+        >
+      </div>
+      <div class="work-list">
+        {
+          publicWork.map((item, index) => (
+            <div class="work-row">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h3>{item}</h3>
+              <p>
+                Materials will be added progressively as the public body of work
+                evolves.
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section id="about" class="section about-section">
+      <div class="container about-grid">
+        <div>
+          <p class="eyebrow">Professional perspective</p>
+          <h2>A systems-thinking perspective on AI</h2>
+        </div>
+        <div class="about-copy">
+          <p>
+            Michel Camarotta is a Systems Engineer with approximately 18 years
+            of experience in enterprise software delivery, quality engineering,
+            automation architecture, technical leadership, and AI-assisted
+            engineering.
+          </p>
+          <p>
+            His work focuses on translating complex technical and organizational
+            problems into reusable frameworks, governed workflows, and scalable
+            engineering practices.
+          </p>
+          <ArrowLink href="https://www.linkedin.com/in/mcamarotta/" external
+            >Full professional history</ArrowLink
+          >
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="section principles-section"
+      aria-labelledby="selected-principles-title"
+    >
+      <div class="container">
+        <p class="eyebrow">Selected principles</p>
+        <h2 id="selected-principles-title">Ideas that guide the work</h2>
+        <ol class="statement-list">
+          {
+            selectedPrinciples.map((statement, index) => (
+              <li>
+                <>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <p>{statement}</p>
+                </>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <section id="contact" class="section container contact-section">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2>Let’s connect</h2>
+      </div>
+      <div>
+        <p class="contact-copy">
+          For conversations about AI solution architecture, AI-assisted
+          engineering, organizational transformation, agentic workflows, or
+          responsible adoption, connect through LinkedIn or GitHub.
+        </p>
+        <div class="contact-links">
+          <ArrowLink href="https://www.linkedin.com/in/mcamarotta/" external
+            >LinkedIn</ArrowLink
+          >
+          <ArrowLink href="https://github.com/michel-camarotta" external
+            >Personal GitHub</ArrowLink
+          >
+          <ArrowLink href="https://github.com/michel-camarotta-org" external
+            >Organization GitHub</ArrowLink
+          >
+          <ArrowLink href="mailto:mcamarotta@gmail.com">Email</ArrowLink>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-top">
+      <a class="wordmark" href="#top"
+        ><Logo size={32} /><span>Mich Think AI</span></a
+      >
+      <p>Practical AI. Strong architecture. Human judgment.</p>
+      <div class="footer-links">
+        <a href="https://github.com/michel-camarotta-org">GitHub</a>
+        <a href="https://www.linkedin.com/in/mcamarotta/">LinkedIn</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© {year} Mich Think AI</span>
+      <span>Montevideo, Uruguay</span>
+    </div>
+  </footer>
+</BaseLayout>

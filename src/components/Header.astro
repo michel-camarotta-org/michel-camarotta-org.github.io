@@ -1,0 +1,40 @@
+---
+import Logo from './Logo.astro';
+
+const navigation = [
+  ['Approach', '#approach'],
+  ['Focus', '#focus'],
+  ['Work', '#work'],
+  ['About', '#about'],
+  ['Contact', '#contact'],
+] as const;
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="wordmark" href="#top" aria-label="Mich Think AI, home">
+      <Logo size={34} />
+      <span>Mich Think AI</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Main navigation">
+      {navigation.map(([label, href]) => <a href={href}>{label}</a>)}
+    </nav>
+
+    <div class="header-links desktop-links">
+      <a href="https://github.com/michel-camarotta-org">GitHub</a>
+      <a href="https://www.linkedin.com/in/mcamarotta/">LinkedIn</a>
+    </div>
+
+    <details class="mobile-nav">
+      <summary aria-label="Open navigation"
+        ><span></span><span></span><span></span></summary
+      >
+      <nav aria-label="Mobile navigation">
+        {navigation.map(([label, href]) => <a href={href}>{label}</a>)}
+        <a href="https://github.com/michel-camarotta-org">GitHub</a>
+        <a href="https://www.linkedin.com/in/mcamarotta/">LinkedIn</a>
+      </nav>
+    </details>
+  </div>
+</header>

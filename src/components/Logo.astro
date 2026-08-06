@@ -1,0 +1,30 @@
+---
+interface Props {
+  size?: number;
+  label?: string;
+}
+
+const { size = 32, label } = Astro.props;
+---
+
+<svg
+  class="logo"
+  width={size}
+  height={size}
+  viewBox="0 0 64 64"
+  role={label ? 'img' : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+>
+  <rect width="64" height="64" rx="14" fill="#123c2d"></rect>
+  <path d="M14 45V18h8l10 12 10-12h8v27h-8V30L32 41 22 30v15z" fill="#f2eee3"
+  ></path>
+  <path d="M14 50h36" stroke="#88b398" stroke-width="3"></path>
+</svg>
+
+<style>
+  .logo {
+    display: block;
+    flex: 0 0 auto;
+  }
+</style>
